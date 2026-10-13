@@ -1,0 +1,94 @@
+! ==========================================================
+! SW2 - Switch d'acces (Cisco 2960)
+! ==========================================================
+enable
+configure terminal
+hostname SW2
+no ip domain-lookup
+service password-encryption
+enable secret Lab@Secret2026
+banner motd # Acces reserve au personnel autorise #
+vtp mode transparent
+spanning-tree mode rapid-pvst
+!
+vlan 10
+ name DIRECTION
+vlan 20
+ name EMPLOYES
+vlan 40
+ name INVITES
+vlan 99
+ name MGMT
+vlan 666
+ name PARKING-PORTS-INUTILISES
+vlan 999
+ name NATIF-INUTILISE
+!
+interface GigabitEthernet0/1
+ description TRUNK-vers-SW1
+ switchport mode trunk
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 10,20,40,99
+ switchport nonegotiate
+!
+! ---------- Securite commune des ports d'acces utilises ----------
+interface range FastEthernet0/1 - 4
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security mac-address sticky
+ switchport port-security violation shutdown
+!
+interface FastEthernet0/1
+ description PC-DIR
+ switchport access vlan 10
+interface FastEthernet0/2
+ description PC-EMP1
+ switchport access vlan 20
+interface FastEthernet0/3
+ description PC-EMP2
+ switchport access vlan 20
+interface FastEthernet0/4
+ description PC-INVITE
+ switchport access vlan 40
+!
+! ---------- Ports inutilises : parking + shutdown ----------
+interface range FastEthernet0/5 - 24
+ description INUTILISE
+ switchport mode access
+ switchport access vlan 666
+ shutdown
+interface GigabitEthernet0/2
+ description INUTILISE
+ switchport mode access
+ switchport access vlan 666
+ shutdown
+!
+! ---------- Administration ----------
+interface Vlan99
+ description MGMT-SW2
+ ip address 192.168.99.3 255.255.255.0
+ no shutdown
+ip default-gateway 192.168.99.1
+!
+ip domain-name lab.local
+username admin secret Lab@Secret2026
+! Si PT refuse la commande suivante : tapez "crypto key generate rsa" puis 2048
+crypto key generate rsa modulus 2048
+ip ssh version 2
+ip access-list standard MGMT-ONLY
+ permit 192.168.99.0 0.0.0.255
+line vty 0 15
+ login local
+ transport input ssh
+ access-class MGMT-ONLY in
+ exec-timeout 5 0
+line console 0
+ password Cons@2026
+ login
+ logging synchronous
+ exec-timeout 5 0
+end
+write memory

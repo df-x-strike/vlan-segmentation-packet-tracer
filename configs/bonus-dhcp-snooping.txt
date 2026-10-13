@@ -1,0 +1,23 @@
+! BONUS (si votre version de Packet Tracer le supporte)
+! Protection contre un faux serveur DHCP (rogue DHCP)
+! ---------- SW1 ----------
+configure terminal
+ip dhcp snooping
+ip dhcp snooping vlan 10,20,40
+no ip dhcp snooping information option
+interface GigabitEthernet0/1
+ ip dhcp snooping trust
+interface GigabitEthernet0/2
+ ip dhcp snooping trust
+end
+! ---------- SW2 ----------
+configure terminal
+ip dhcp snooping
+ip dhcp snooping vlan 10,20,40
+no ip dhcp snooping information option
+interface GigabitEthernet0/1
+ ip dhcp snooping trust
+interface range FastEthernet0/1 - 4
+ ip dhcp snooping limit rate 10
+end
+! Verification : show ip dhcp snooping

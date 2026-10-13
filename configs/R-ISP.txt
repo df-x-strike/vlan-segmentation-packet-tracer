@@ -1,0 +1,17 @@
+! ==========================================================
+! R-ISP - Fournisseur d'acces simule (Cisco 2911)
+! ==========================================================
+enable
+configure terminal
+hostname R-ISP
+no ip domain-lookup
+interface GigabitEthernet0/0
+ description vers-R1
+ ip address 203.0.113.1 255.255.255.252
+ no shutdown
+interface GigabitEthernet0/1
+ description vers-SRV-INTERNET
+ ip address 8.8.8.1 255.255.255.0
+ no shutdown
+end
+write memory

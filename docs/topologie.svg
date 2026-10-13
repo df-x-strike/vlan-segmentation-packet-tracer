@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 870 610" font-family="Arial, Helvetica, sans-serif">
+  <rect width="870" height="610" fill="#ffffff"/>
+  <text x="435" y="26" text-anchor="middle" font-size="18" font-weight="bold" fill="#111827">Topologie : segmentation VLAN d'une petite organisation</text>
+
+  <!-- liens -->
+  <g stroke="#374151" stroke-width="2" fill="none">
+    <line x1="450" y1="95" x2="450" y2="130"/>
+    <line x1="450" y1="180" x2="450" y2="215"/>
+    <line x1="450" y1="265" x2="450" y2="315"/>
+    <line x1="375" y1="340" x2="270" y2="340"/>
+    <line x1="525" y1="340" x2="630" y2="340"/>
+    <line x1="450" y1="365" x2="450" y2="420"/>
+    <line x1="450" y1="470" x2="105" y2="525"/>
+    <line x1="450" y1="470" x2="325" y2="525"/>
+    <line x1="450" y1="470" x2="545" y2="525"/>
+    <line x1="450" y1="470" x2="765" y2="525"/>
+  </g>
+
+  <!-- etiquettes de liens -->
+  <g font-size="12" fill="#374151">
+    <text x="460" y="117">8.8.8.0/24</text>
+    <text x="460" y="202">203.0.113.0/30 (WAN + NAT)</text>
+    <text x="460" y="285">Trunk 802.1Q : Gi0/0 - Gi0/1</text>
+    <text x="460" y="300">VLAN 10,20,30,40,99 - natif 999</text>
+    <text x="322" y="332" text-anchor="middle">Fa0/1 - VLAN 30</text>
+    <text x="577" y="332" text-anchor="middle">Fa0/2 - VLAN 99</text>
+    <text x="460" y="388">Trunk : Gi0/2 - Gi0/1</text>
+    <text x="460" y="403">VLAN 10,20,40,99 - natif 999</text>
+  </g>
+
+  <!-- equipements reseau -->
+  <g fill="#e5e7eb" stroke="#374151" stroke-width="2">
+    <rect x="375" y="45" width="150" height="50" rx="6"/>
+    <rect x="375" y="130" width="150" height="50" rx="6"/>
+    <rect x="375" y="215" width="150" height="50" rx="6"/>
+    <rect x="375" y="315" width="150" height="50" rx="6"/>
+    <rect x="375" y="420" width="150" height="50" rx="6"/>
+  </g>
+  <g font-size="13" text-anchor="middle" fill="#111827">
+    <text x="450" y="66" font-weight="bold">SRV-INTERNET</text><text x="450" y="84">8.8.8.8 (HTTP, DNS)</text>
+    <text x="450" y="151" font-weight="bold">R-ISP</text><text x="450" y="169">Fournisseur simule</text>
+    <text x="450" y="236" font-weight="bold">R1</text><text x="450" y="254">Inter-VLAN + ACL + NAT</text>
+    <text x="450" y="336" font-weight="bold">SW1</text><text x="450" y="354">Distribution (root)</text>
+    <text x="450" y="441" font-weight="bold">SW2</text><text x="450" y="459">Acces</text>
+  </g>
+
+  <!-- VLAN 30 serveur -->
+  <rect x="120" y="315" width="150" height="50" rx="6" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+  <g font-size="13" text-anchor="middle" fill="#111827">
+    <text x="195" y="336" font-weight="bold">SRV-INT</text><text x="195" y="354">192.168.30.10</text>
+  </g>
+
+  <!-- VLAN 99 admin -->
+  <rect x="630" y="315" width="150" height="50" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <g font-size="13" text-anchor="middle" fill="#111827">
+    <text x="705" y="336" font-weight="bold">PC-ADMIN</text><text x="705" y="354">192.168.99.10</text>
+  </g>
+
+  <!-- postes SW2 -->
+  <rect x="30" y="525" width="150" height="60" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <rect x="250" y="525" width="150" height="60" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <rect x="470" y="525" width="150" height="60" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <rect x="690" y="525" width="150" height="60" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <g font-size="13" text-anchor="middle" fill="#111827">
+    <text x="105" y="546" font-weight="bold">PC-DIR</text><text x="105" y="563">VLAN 10 - Fa0/1</text><text x="105" y="578" font-size="11">192.168.10.0/24</text>
+    <text x="325" y="546" font-weight="bold">PC-EMP1</text><text x="325" y="563">VLAN 20 - Fa0/2</text><text x="325" y="578" font-size="11">192.168.20.0/24</text>
+    <text x="545" y="546" font-weight="bold">PC-EMP2</text><text x="545" y="563">VLAN 20 - Fa0/3</text><text x="545" y="578" font-size="11">192.168.20.0/24</text>
+    <text x="765" y="546" font-weight="bold">PC-INVITE</text><text x="765" y="563">VLAN 40 - Fa0/4</text><text x="765" y="578" font-size="11">192.168.40.0/24</text>
+  </g>
+</svg>
