@@ -164,3 +164,5 @@ Projet pédagogique réalisé en laboratoire simulé. Les mots de passe et adres
 
 **Faly Jean Antonio Downavan ANDRIATSITOHAINA** — Analyste SOC & Ingénieur Cybersécurité
 GitHub : [df-x-strike](https://github.com/df-x-strike) · YouTube : [@cyberprojects-antonio](https://www.youtube.com/@cyberprojects-antonio) · [LinkedIn](https://www.linkedin.com/in/faly-jean-antonio-downavan-andriatsitohaina-00321a3b1) · [Portfolio](https://df-x-strike.github.io/)
+
+Lien vidéo sur ma chaîne Youtube : https://youtu.be/qitwr65YH8A
